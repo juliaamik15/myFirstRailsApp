@@ -16,5 +16,7 @@
 body {
 	background-color: "#E6E6FA";
 	background-image: url("/assets/cacti-bg.jpg");
-	background-size: 100% auto;
+	background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
