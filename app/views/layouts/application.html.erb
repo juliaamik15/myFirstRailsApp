@@ -6,9 +6,23 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body bgcolor="#E6E6FA" >
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/static_pages/about">About</a></li>
+    <li><a href="/static_pages/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<%#=image_tag("cacti-bg.jpg", width: "100%", alt: "Cacti in a desert")%>
 
 <%= yield %>
+
+<footer>
+  &copy; 2016 Julia's cactus site
+</footer>
 
 </body>
 </html>
