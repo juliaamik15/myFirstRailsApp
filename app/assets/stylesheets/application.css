@@ -14,9 +14,9 @@
  *= require_self
  */
 body {
-	background-color: "#E6E6FA";
-	background-image: url("/assets/cacti-bg.jpg");
-	background-repeat: no-repeat;
+  background-color: "#E6E6FA";
+  background-image: url("/assets/cacti-bg.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
   position: relative;
 }
