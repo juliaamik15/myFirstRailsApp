@@ -31,7 +31,7 @@ h1{
 	background-color: #eaeac0;
 
 	ul li{
-  	/* display: inline-block; */
+  	
   	list-style-type: none;
   	padding: 0.1em;
   	font-weight: 400;
@@ -44,6 +44,17 @@ h1{
 		}
 
 	}
+}
+
+ul li{
+  display: inline-block;
+  list-style-type: none;
+  padding: 1em;
+  font-weight: 400;
+  font-size: 1.5em;
+}
+ul li a { 
+  text-decoration: none; 
 
 }
 
@@ -63,24 +74,28 @@ footer {
 p{
 	font-size: 1.2em;
 	color: #eaeac0;
-	text-align: center;
+  text-align: center;
 }
 
 html, body {
   height: 100%;
 }
+
 .page-wrap {
   min-height: 100%;
   /* equal to footer height */
   margin-bottom: -105px; 
 }
+
 .page-wrap:after {
   content: "";
   display: block;
 }
+
 .site-footer, .page-wrap:after {
   height: 105px; 
 }
+
 
 
 
