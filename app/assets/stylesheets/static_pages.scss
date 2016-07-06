@@ -1,22 +1,52 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$font-stack: Indie Flower,cursive;
+
+body {
+	
+	padding-top: 70px;
+	background-color: "#E6E6FA";
+	background-image: url("/assets/cacti-bg.jpg");
+	background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
 h1{
   display: block;
-	font-family: Indie Flower,cursive;
+	font-family: $font-stack;
 	font-weight: 700;
 	font-size: 3em;
+	text-align: center;
 }
-ul li{
-  display: inline-block;
-  list-style-type: none;
-  padding: 1em;
-  font-weight: 400;
-	font-size: 1.5em;
+
+.navbar-brand{
+	padding: 10px 15px;
 }
-ul li a { 
-	text-decoration: none; 
+
+.navbar {
+	
+	background-color: #eaeac0;
+
+	ul li{
+  	/* display: inline-block; */
+  	list-style-type: none;
+  	padding: 0.1em;
+  	font-weight: 400;
+		font-size: 1.5em;
+		
+
+		a { 
+			text-decoration: none; 
+			color: black;
+		}
+
+	}
+
 }
+
 
 footer {
 	font-size: 1.3em;
@@ -26,10 +56,31 @@ footer {
 	bottom: 40px;
 	width: 100%;
 	padding: 40px;
+	text-align: center;
 
 }
 
 p{
-	font-size: 1em;
+	font-size: 1.2em;
 	color: #eaeac0;
+	text-align: center;
 }
+
+html, body {
+  height: 100%;
+}
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -105px; 
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: 105px; 
+}
+
+
+
