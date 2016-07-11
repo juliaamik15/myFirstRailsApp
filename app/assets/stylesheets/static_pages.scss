@@ -5,9 +5,8 @@
 $font-stack: Indie Flower,cursive;
 
 body {
-	
-	padding-top: 70px;
-	background-color: "#E6E6FA";
+	padding-top: 50px;
+	background-color: black;
 	background-image: url("/assets/cacti-bg.jpg");
 	background-repeat: no-repeat;
   background-size: cover;
@@ -23,27 +22,27 @@ h1{
 }
 
 .navbar-brand{
-	padding: 10px 15px;
+	padding: 5px 15px;
 }
 
 .navbar {
-	
-	background-color: #eaeac0;
-
+	height: 50px;
+	background-color: rgba(171, 189, 101, 0.6);
 	ul li{
-  	
   	list-style-type: none;
   	padding: 0.1em;
   	font-weight: 400;
 		font-size: 1.5em;
-		
 
 		a { 
 			text-decoration: none; 
 			color: black;
 		}
-
 	}
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #615454;
 }
 
 ul li{
@@ -55,16 +54,14 @@ ul li{
 }
 ul li a { 
   text-decoration: none; 
-
 }
-
 
 footer {
 	font-size: 1.3em;
 	font-weight: 700;
 	color: #d5c7ea;
 	position: fixed;
-	bottom: 40px;
+	bottom: 15px;
 	width: 100%;
 	padding: 40px;
 	text-align: center;
@@ -79,13 +76,13 @@ p{
 
 html, body {
   height: 100%;
-  overflow-y:hidden;
+  /* overflow-y:hidden; */
 }
 
 .page-wrap {
   min-height: 100%;
   /* equal to footer height */
-  margin-bottom: -105px; 
+  margin-bottom: -85px; 
 }
 
 .page-wrap:after {
@@ -94,7 +91,8 @@ html, body {
 }
 
 .site-footer, .page-wrap:after {
-  height: 105px; 
+  height: 85px; 
+  padding: 20px 0px;
 }
 
 
