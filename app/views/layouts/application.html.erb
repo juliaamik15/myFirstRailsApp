@@ -1,55 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MyFirstRailsApp</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <head>
+    <title>MyFirstRailsApp</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="page-wrap">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<div class="page-wrap">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+        	 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+              <%= image_tag("Acantocalycium_violaceum.jpg", class: "img-responsive", width: '50') %>
+            </a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+    	       <li><a href="/">Home</a></li>
+    	       <li><a href="/static_pages/about">About</a></li>
+    	       <li><a href="#">Gallery</a></li>
+    	       <li><a href="#">Blog</a></li>
+    	       <li><a href="#">Shop</a></li>
+    	       <li><a href="/static_pages/contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-    	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">
-        <%= image_tag("Acantocalycium_violaceum.jpg", class: "img-responsive", width: '50') %>
-      </a>
+      <%#=image_tag("cacti-bg.jpg", width: "100%", alt: "Cacti in a desert")%>
+
+      <%= yield %>
+
+      <footer class="site-footer">
+       &copy; 2016 Julia's cactus site
+      </footer>
+
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav navbar-right">
-	    <li><a href="/">Home</a></li>
-	    <li><a href="/static_pages/about">About</a></li>
-	    <li><a href="#">Gallery</a></li>
-	    <li><a href="#">Blog</a></li>
-	    <li><a href="#">Shop</a></li>
-	    <li><a href="/static_pages/contact">Contact</a></li>
-    </ul>
-    </div>
-  </div>
-</nav>
-
-
-
-<%#=image_tag("cacti-bg.jpg", width: "100%", alt: "Cacti in a desert")%>
-
-<%= yield %>
-
-<footer class="site-footer">
-  &copy; 2016 Julia's cactus site
-</footer>
-</div>
-</body>
+  </body>
 </html>
