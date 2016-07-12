@@ -7,10 +7,17 @@ $font-stack: Indie Flower,cursive;
 body {
 	padding-top: 50px;
 	background-color: black;
+  
+}
+
+#contact, #faq
+{
 	background-image: url("/assets/cacti-bg.jpg");
 	background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  height: 1080px;
+  margin-top: -20px;
 }
 
 h1{
@@ -19,26 +26,39 @@ h1{
 	font-weight: 700;
 	font-size: 3em;
 	text-align: center;
+	padding-top: 10px;
 }
 
 .navbar-brand{
 	padding: 5px 15px;
 }
 
+nav{
+	background-color: rgba(171, 189, 101, 0.6);
+}
+
 .navbar {
 	height: 50px;
 	background-color: rgba(171, 189, 101, 0.6);
-	ul li{
-  	list-style-type: none;
-  	padding: 0.1em;
-  	font-weight: 400;
-		font-size: 1.5em;
 
-		a { 
-			text-decoration: none; 
-			color: black;
+	ul{
+	float: right;
+	 	li{
+  		list-style-type: none;
+  		padding: 0.1em;
+  		font-weight: 400;
+			font-size: 1.5em;
+
+			a { 
+				text-decoration: none; 
+				color: black;
+			}
 		}
 	}
+}
+
+.navbar-collapse{
+	
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -61,7 +81,7 @@ footer {
 	font-weight: 700;
 	color: #d5c7ea;
 	position: fixed;
-	bottom: 15px;
+	bottom: 15px; 
 	width: 100%;
 	padding: 40px;
 	text-align: center;
@@ -70,7 +90,7 @@ footer {
 
 p{
 	font-size: 1.2em;
-	color: #eaeac0;
+	color: #67673a; /* #eaeac0; */
   text-align: center;
 }
 
@@ -95,6 +115,9 @@ html, body {
   padding: 20px 0px;
 }
 
-
+.panel-default>.panel-heading{
+	background-color: #b9daa9;
+	font-family: $font-stack;
+}
 
 
