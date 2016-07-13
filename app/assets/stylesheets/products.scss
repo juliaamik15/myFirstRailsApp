@@ -1,0 +1,57 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.product_pages
+{
+	background-image: url("/assets/cacti-bg.jpg");
+	background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 1080px;
+  margin-top: -20px;
+}
+
+.table_header{
+	color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px;
+  
+}
+
+#products_table{
+	margin: 20px auto;
+}
+
+td,th{
+	border: 1px solid white;
+	color: white;
+	font-size: 15px;
+	height: 60px;
+}
+
+.new_product, .edit_product{
+	margin: 20px;
+
+	input[type=text]{
+		width: 250px;
+	}
+}
+
+label {
+	color: white;
+}
+
+.product_link {
+	a, a:visited {
+		margin: 20px;
+		color: white;
+		font-size: 1.3em;
+	}
+}
+
+#product_description{
+	width: 250px;
+	height: 170px;
+}
