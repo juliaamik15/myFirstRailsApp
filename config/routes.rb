@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'static_pages/gallery'
+
   resources :products
   get 'static_pages/faq'
 

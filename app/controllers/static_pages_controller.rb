@@ -1,4 +1,4 @@
 class StaticPagesController < ApplicationController
-  def faq
+  def gallery
   end
 end
