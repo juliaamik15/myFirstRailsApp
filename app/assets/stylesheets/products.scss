@@ -2,8 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.product_pages
-{
+a, a:visited {
+	color: #666;
+}
+
+.product_pages{
 	background-image: url("/assets/cacti-bg.jpg");
 	background-repeat: no-repeat;
   background-size: cover;
@@ -12,10 +15,14 @@
   margin-top: -20px;
 }
 
+
+
 .product_image{
 	margin: 15px;
 	min-width: 120px;
+	
 }
+
 
 .table_header{
 	color: white;

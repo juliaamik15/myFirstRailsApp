@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   #root 'welcome#index'
   root 'static_pages#index'
 
+  resources :orders, only: [:index, :show, :create, :destroy]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
