@@ -6,19 +6,7 @@
 
   <div class="container">
     <div class="row">
-    <% @products.each do |product| %>
-      <div class="col-sm-6  col-md-3">
-        <div class="product_image">
-          <%= image_tag(product.image_url, class: "img-responsive") %>
-          <h4><%= product.name %></h4>
-          <p><%= product.description %></p>
-          <strong>Price: &pound;<%= product.price.to_f %></strong>
-          <%= link_to 'Show', product %>
-          <%= link_to 'Edit', edit_product_path(product) %>
-          <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </div>
-      </div><!-- /col -->
-    <% end %>
+      <%= render @products %>
     </div>
   </div>
   
