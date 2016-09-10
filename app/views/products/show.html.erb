@@ -25,6 +25,18 @@
   	<strong>Price:</strong>
   	<%= @product.price %>
 	</p>
+	<p>
+  	<strong>In stock:</strong>
+  	<% if @product.availability %>
+  		<%= "yes" %>
+  	<% else %>
+  		<%= "no" %>
+  	<% end %>
+	</p>
+	<p>
+  	<strong>Creation date:</strong>
+  	<%= @product.created_at.to_formatted_s(:long) %>
+	</p>
 
 	<div class="product_link">
 		<%= link_to 'Edit', edit_product_path(@product) %> |
