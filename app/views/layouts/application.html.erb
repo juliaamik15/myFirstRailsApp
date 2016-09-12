@@ -32,7 +32,7 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
     	       <li><%= link_to 'Home', static_pages_index_path %></li>
-    	       <li><a href="/static_pages/index/#about">About</a></li>
+    	       <li><%= link_to 'About', static_pages_index_path(:anchor => "about") %></li>
     	       <li><%= link_to 'Gallery', static_pages_gallery_path %></li>
     	       <li><a href="#">Blog</a></li>
     	       <li><%= link_to 'Shop', products_path %></li>
