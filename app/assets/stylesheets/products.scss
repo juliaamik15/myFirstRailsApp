@@ -6,7 +6,7 @@ a, a:visited {
 	color: #666;
 }
 
-.product_pages{
+.product_pages, .user_pages, .authentication_pages{
 	background-image: url("/assets/cacti-bg.jpg");
 	background-repeat: no-repeat;
   background-size: cover;
@@ -54,7 +54,7 @@ td,th{
 }
 
 label {
-	color: white;
+	color: black;
 }
 
 .product_link {
