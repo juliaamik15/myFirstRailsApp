@@ -39,7 +39,7 @@
              <li><%= link_to 'FAQ', static_pages_faq_path %></li>
     	       <li><%= link_to 'Contact', static_pages_contact_path %></li>
             </ul>
-            <ul class="nav pull-right">
+            <ul class="nav pull-left">
             <% if user_signed_in? %>
             <li>
               <div class="hello_user">Hi, <%= current_user.first_name %></div>
@@ -73,7 +73,9 @@
       </nav>
 
       <!-- devise tags -->
-      <p class="alert"><%= alert %></p>
+      <% if alert %>
+      <p class="alert alert-warning"><%= alert %></p>
+      <% end %>
       <%#=image_tag("cacti-bg.jpg", width: "100%", alt: "Cacti in a desert")%>
 
       <%= yield %>
