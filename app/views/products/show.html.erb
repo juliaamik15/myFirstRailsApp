@@ -1,45 +1,61 @@
 <div class="product_pages">
 	<p id="notice"><%= notice %></p>
-
-	<h1>Product</h1>
-	<p>
-	  <strong>Name:</strong>
-	  <%= @product.name %>
-	</p>
-
-	<p>
-	  <strong>Description:</strong>
-	  <%= @product.description %>
-	</p>
-
-	<p>
-	  <strong>Image url:</strong>
-	  <%= @product.image_url %>
-	</p>
-
-	<p>
-  	<strong>Color:</strong>
-  	<%= @product.flower_colour %>
-	</p>
-	<p>
-  	<strong>Price:</strong>
-  	<%= @product.price %>
-	</p>
-	<p>
-  	<strong>In stock:</strong>
-  	<% if @product.availability %>
-  		<%= "yes" %>
-  	<% else %>
-  		<%= "no" %>
-  	<% end %>
-	</p>
-	<p>
-  	<strong>Creation date:</strong>
+<div class="container-fluid">
+<div class="row">
+  
+  <div class="col-sm-6 col-md-3">
+  <h1><%= @product.name %></h1>
+  <p class="product_show">
+  	<strong>Creation date: </strong>
   	<%= @product.created_at.to_formatted_s(:long) %>
 	</p>
+	<p class="product_show">
+  	<strong>In stock: </strong>
+  	<% if @product.availability %>
+  		<%= " yes" %>
+  	<% else %>
+  		<%= " no" %>
+  	<% end %>
+	</p>
+	
+  <p class="product_show">
+  	<strong>Description: </strong><%= @product.description %> 
+  </p>
+  <p class="product_show">
+      <strong>Flower color: </strong> <%= @product.flower_colour %> 
+  </p>
+  <p class="product_show">
+	<% if @product.comments_count >0 %>
+	  <strong>Top positive review:</strong>
+			<%= @product.highest_rating_comment.body %>
+			<% else %>
+			<strong>No comments so far.</strong>
+		<% end %>
+	</p>
+	<p class="product_show"><% if @product.comments_count >0 %>
+	  <strong>Top critical review:</strong>
+			<%= @product.worst_rating_comment.body %>
+		<% end %>	
+	</p>
 
-	<div class="product_link">
-		<%= link_to 'Edit', edit_product_path(@product) %> |
-		<%= link_to 'Back', products_path %>
-	</div>
+	
+  </div>
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <%= image_tag(@product.image_url, class: "img-responsive") %>
+      <div class="caption product_show">
+        
+        <p>
+        <strong>Price:</strong> <%= @product.price %>£</p>
+        
+        <p><%= link_to 'Edit', edit_product_path(@product), class: "btn btn-success"  %> 
+        <%= link_to 'Back', products_path, class: "btn btn-success" %></p>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+	
+</div>
+
+

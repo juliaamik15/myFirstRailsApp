@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
 a, a:visited {
 	color: #666;
 }
@@ -12,7 +14,7 @@ a, a:visited {
   background-size: cover;
   position: relative;
   height: 1080px;
-  margin-top: -20px;
+  margin-top: -10px;
 }
 
 
@@ -68,4 +70,9 @@ label {
 #product_description{
 	width: 250px;
 	height: 170px;
+}
+
+p.product_show{
+	text-align: left;
+	color: white;
 }

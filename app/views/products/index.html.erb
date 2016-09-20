@@ -2,7 +2,18 @@
   <p id="notice"><%= notice %></p>
 
   <h1>Cacti for sale</h1>
-
+<div class="container">
+  <%= form_tag "/products", method: "get", class: 'navbar-form navbar-left' do %>
+              <div class="form-group">
+                <%= text_field_tag :q, nil, class: 'form-control', placeholder: 'Search by name' %>
+              </div>
+              <%= submit_tag "Search", class: "btn btn-default" %>
+              
+            <% end %>
+  <div class="product_link">
+    <%= link_to 'New Product', new_product_path %>
+  </div>
+  </div>
 
   <div class="container">
     <div class="row">
@@ -11,7 +22,4 @@
   </div>
   
 
-  <div class="product_link">
-    <%= link_to 'New Product', new_product_path %>
-  </div>
 </div>
