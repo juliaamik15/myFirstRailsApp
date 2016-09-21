@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   
-  devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
-  
 
-  resources :users
   get 'static_pages/gallery'
 
   resources :products
@@ -27,6 +24,15 @@ Rails.application.routes.draw do
   root 'static_pages#index'
 
   resources :orders, only: [:index, :show, :create, :destroy]
+
+  devise_for :users, :skip => [:sessions]
+  as :user do
+    get 'signin' => 'devise/sessions#new', :as => :new_user_session
+    post 'signin' => 'devise/sessions#create', :as => :user_session
+    delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
+  
+  resources :users
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
