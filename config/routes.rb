@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   get 'static_pages/gallery'
 
-  resources :products
+  resources :products do
+    resources :comments
+  end
+  
   get 'static_pages/faq'
 
   get 'static_pages/about'

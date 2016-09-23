@@ -1,61 +1,76 @@
-<div class="product_pages">
-	<p id="notice"><%= notice %></p>
-<div class="container-fluid">
-<div class="row">
-  
-  <div class="col-sm-6 col-md-3">
-  <h1><%= @product.name %></h1>
-  <p class="product_show">
-  	<strong>Creation date: </strong>
-  	<%= @product.created_at.to_formatted_s(:long) %>
-	</p>
-	<p class="product_show">
-  	<strong>In stock: </strong>
-  	<% if @product.availability %>
-  		<%= " yes" %>
-  	<% else %>
-  		<%= " no" %>
-  	<% end %>
-	</p>
-	
-  <p class="product_show">
-  	<strong>Description: </strong><%= @product.description %> 
-  </p>
-  <p class="product_show">
-      <strong>Flower color: </strong> <%= @product.flower_colour %> 
-  </p>
-  <p class="product_show">
-	<% if @product.comments_count >0 %>
-	  <strong>Top positive review:</strong>
-			<%= @product.highest_rating_comment.body %>
-			<% else %>
-			<strong>No comments so far.</strong>
-		<% end %>
-	</p>
-	<p class="product_show"><% if @product.comments_count >0 %>
-	  <strong>Top critical review:</strong>
-			<%= @product.worst_rating_comment.body %>
-		<% end %>	
-	</p>
+<div class="product_show_page">
+  <p id="notice"><%= notice %></p>
 
-	
-  </div>
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <%= image_tag(@product.image_url, class: "img-responsive") %>
-      <div class="caption product_show">
-        
-        <p>
-        <strong>Price:</strong> <%= @product.price %>£</p>
-        
-        <p><%= link_to 'Edit', edit_product_path(@product), class: "btn btn-success"  %> 
-        <%= link_to 'Back', products_path, class: "btn btn-success" %></p>
+  <div class="container-fluid">
+  <h1><%= @product.name %></h1>
+  <div class="row">
+  
+  
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= image_tag(@product.image_url, class: "img-responsive") %>
+        <div class="caption product_show">
+          <h1><%= @product.name %></h1>
+          <p>
+          <strong>Price:</strong> <%= @product.price %>£</p>
+          
+          <p><%= link_to 'Edit', edit_product_path(@product), class: "btn btn-success"  %> 
+          <%= link_to 'Back', products_path, class: "btn btn-success" %></p>
+        </div>
       </div>
     </div>
+
+    <div class="col-sm-6 col-md-4">
+      <p class="product_show">
+        <strong>Creation date: </strong>
+        <%= @product.created_at.to_formatted_s(:long) %>
+      </p>
+      <p class="product_show">
+        <strong>In stock: </strong>
+        <% if @product.availability %>
+          <%= " yes" %>
+        <% else %>
+          <%= " no" %>
+        <% end %>
+      </p>
+      
+      <p class="product_show">
+        <strong>Description: </strong><%= @product.description %> 
+      </p>
+      <p class="product_show">
+          <strong>Flower color: </strong> <%= @product.flower_colour %> 
+      </p>
+      <p class="product_show">
+      <% if @product.comments_count >0 %>
+      <strong>Average Rating:</strong>
+       <div class="rated" data-score="<%= @product.average_rating %>"></div> 
+        <strong>Top positive review:</strong>
+          <%= @product.highest_rating_comment.body %>
+          <% else %>
+          <strong>No comments for this product.</strong>
+        <% end %>
+      <br>
+      <% if @product.comments_count >0 %>
+        <strong>Top critical review:</strong>
+          <%= @product.worst_rating_comment.body %>
+      <% end %> 
+      </p>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <%= render 'comments/form' %>
+    </div>
+
+
+    <div class="col-sm-6 col-md-4">
+      Customer Reviews <%= render 'comments' %>
+    </div>
+
   </div>
-</div>
+  </div>
+
 </div>
 	
-</div>
+
 
 
