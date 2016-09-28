@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
 	has_many :orders
-	has_many :comments
+	has_many :comments, dependent: :destroy
 	validates :name, presence: true
 
 	def highest_rating_comment
