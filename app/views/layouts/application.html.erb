@@ -9,7 +9,7 @@
     
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
-    
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <%= javascript_include_tag 'jquery.raty.js' %>
     
@@ -77,6 +77,7 @@
       <% if alert %>
       <p class="alert alert-warning"><%= alert %></p>
       <% end %>
+      
       <%#=image_tag("cacti-bg.jpg", width: "100%", alt: "Cacti in a desert")%>
 
       <%= yield %>
