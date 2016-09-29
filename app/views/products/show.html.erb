@@ -12,10 +12,15 @@
         <div class="caption product_show">
           <h1><%= @product.name %></h1>
           <p>
-          <strong>Price:</strong> <%= @product.price %>£</p>
+          <strong>Price:</strong> £<%= @product.price %></p>
           
-          <p><%= link_to 'Edit', edit_product_path(@product), class: "btn btn-success"  %> 
-          <%= link_to 'Back', products_path, class: "btn btn-success" %></p>
+          <p>
+          <% if signed_in? && current_user.admin? %>
+            <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-success"  %> 
+          <% end %>
+            <%= link_to 'Back', products_path, class: "btn btn-success" %>
+            
+          </p>
         </div>
       </div>
     </div>

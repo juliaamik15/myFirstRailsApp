@@ -5,15 +5,17 @@
           <p><%= product.description %></p>
           <strong>Price: &pound;<%= product.price.to_f %></strong>
           <strong> In stock: 
-          <% if product.availability %>
-            <%= "yes" %>
-          <% else %>
-            <%= "no" %>
-          <% end %>
+            <% if product.availability %>
+              <%= "yes" %>
+            <% else %>
+              <%= "no" %>
+            <% end %>
           </strong>
           <strong> Created: <%=product.created_at.to_formatted_s(:long) %> </strong>
           <%= link_to 'Show', product %>
-          <%= link_to 'Edit', edit_product_path(product) %>
-          <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% if signed_in? && current_user.admin? %>
+            <%= link_to 'Edit', edit_product_path(product) %>
+            <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
         </div>
       </div><!-- /col -->
