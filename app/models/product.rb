@@ -18,4 +18,8 @@ class Product < ActiveRecord::Base
 	def average_rating
   	comments.average(:rating).to_f
 	end
+
+	def self.search(search_term)
+		where(" lower(name) LIKE lower(?) ", "%#{search_term}%")
+	end
 end
