@@ -3,9 +3,12 @@ require 'rails_helper'
 describe UsersController, :type => :controller do
 
 	before do
-		@user = User.create!(email: "testuser@gmail.com", password: "123456")
-		@user2 = User.create!(email: "testuser2@gmail.com", password: "123456")
-		@admin = User.create!(email: "testadmin@gmail.com", password: "123456", admin: true)
+		#@user = User.create!(email: "testuser@gmail.com", password: "123456")
+		@user = FactoryGirl.create(:user)
+		@admin = FactoryGirl.create(:admin)
+		@user2 = FactoryGirl.create(:user)
+		#@user2 = User.create!(email: "testuser2@gmail.com", password: "123456")
+		#@admin = User.create!(email: "testadmin@gmail.com", password: "123456", admin: true)
 	end
 
 	describe 'GET #show' do
