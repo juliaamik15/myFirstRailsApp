@@ -12,7 +12,11 @@
         <div class="caption product_show">
           <h1><%= @product.name %></h1>
           <p>
-          <strong>Price:</strong> £<%= @product.price %></p>
+            <strong>Price:</strong> £<%= @product.price %>
+            <%= form_tag "/payments/create" do %>
+              <%= render partial: "shared/stripe_checkout_button" %>
+            <% end %>
+          </p>
           
           <p>
           <% if signed_in? && current_user.admin? %>
