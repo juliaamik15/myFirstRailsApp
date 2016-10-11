@@ -16,6 +16,7 @@ class PaymentsController < ApplicationController
 	    	@order.user = @user
 	    	@order.product = @product
 	    	@order.total = @product.price
+	    	logger.debug "Order fields before saving: #{@order.product.id}, #{@order.user.id}, #{@order.total}"
 	    	@order.save
   		end
 	    redirect_to product_path(@product), notice: 'Thank you for your purchase'

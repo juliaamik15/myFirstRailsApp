@@ -1,5 +1,6 @@
 <div class="col-sm-6  col-md-3">
         <div class="product_image">
+          <% logger.debug "Product image is there: #{product.image_url}"%>
           <%= image_tag(product.image_url, class: "img-responsive") %>
           <h4><%= product.name %></h4>
           <p><%= product.description %></p>

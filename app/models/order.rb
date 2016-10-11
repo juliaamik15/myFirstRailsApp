@@ -4,4 +4,5 @@ class Order < ActiveRecord::Base
 
 	validates :user, presence: true
   validates :product, presence: true
+  
 end

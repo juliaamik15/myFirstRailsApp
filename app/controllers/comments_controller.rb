@@ -4,9 +4,10 @@ class CommentsController < ApplicationController
 		@product = Product.find(params[:product_id])
   	@comment = @product.comments.new(comment_params)
   	@comment.user = current_user
-
+    logger.debug("User creating a comment: #{@comment.user.email }")
     respond_to do |format|
       if @comment.save
+        logger.debug("Comment saved successfully!")
         format.html { redirect_to @product, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
