@@ -3,18 +3,16 @@ class OrdersController < ApplicationController
   load_and_authorize_resource 
   
   def index
+    @orders = Order.all
   end
 
-  def show
-  end
+  
 
-  def new
-  end
+  private
 
-  def create
+  def order_params
+    params.require(:order).permit(:user_id, :product_id, :total)
   end
-
-  def destroy
-  end
+  
 
 end

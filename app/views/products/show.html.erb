@@ -13,9 +13,13 @@
           <h1><%= @product.name %></h1>
           <p>
             <strong>Price:</strong> £<%= @product.price %>
-            <%= form_tag "/payments/create" do %>
-              <%= render partial: "shared/stripe_checkout_button" %>
-            <% end %>
+            
+              <% if @product.availability %>
+                <%= form_tag "/payments/create" do %>
+                  <%= hidden_field_tag(:product_id, @product.id) %>
+                  <%= render partial: "shared/stripe_checkout_button" %>
+                <% end %>
+              <% end %>
           </p>
           
           <p>

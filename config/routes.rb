@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
 
+  get 'payments/create'
+
   get 'static_pages/gallery'
 
   resources :products do
@@ -18,6 +20,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   post 'static_pages/thank_you'
+
+  post 'payments/create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
