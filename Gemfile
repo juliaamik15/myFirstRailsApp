@@ -65,4 +65,8 @@ end
 
 gem 'stripe'
 
+gem "brakeman", :require => false
+
+gem "recaptcha", require: "recaptcha/rails"
+
 

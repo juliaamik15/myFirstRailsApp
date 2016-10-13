@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :show, :create, :destroy]
 
-  devise_for :users, :skip => [:sessions]
+  devise_for :users, controllers: { registrations: "registrations", passwords: "passwords" }, :skip => [:sessions]
   as :user do
     get 'signin' => 'devise/sessions#new', :as => :new_user_session
     post 'signin' => 'devise/sessions#create', :as => :user_session

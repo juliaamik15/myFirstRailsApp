@@ -9,6 +9,9 @@
 	    <%= f.label :email %><br />
 	    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
 	  </div>
+	  <div class="fields">
+   		<%= recaptcha_tags %>
+ 		</div>
 	</div>
   <div class="actions">
     <%= f.submit "Send me reset instructions", class: "btn btn-lg btn-primary btn-block"  %>

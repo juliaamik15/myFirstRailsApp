@@ -40,6 +40,7 @@ GEM
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    brakeman (3.4.0)
     builder (3.2.2)
     byebug (9.0.5)
     cancancan (1.15.0)
@@ -130,6 +131,8 @@ GEM
     rake (11.2.2)
     rdoc (4.2.2)
       json (~> 1.4)
+    recaptcha (3.3.0)
+      json
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     rest-client (2.0.0)
@@ -200,6 +203,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  brakeman
   byebug
   cancancan (~> 1.10)
   coffee-rails (~> 4.1.0)
@@ -210,6 +214,7 @@ DEPENDENCIES
   pg
   rails (= 4.2.6)
   rails-controller-testing
+  recaptcha
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
