@@ -3,7 +3,11 @@ class OrdersController < ApplicationController
   load_and_authorize_resource 
   
   def index
-    @orders = Order.all
+  	if signed_in? && current_user.admin? 
+  		@orders = Orders.all 
+  	 else
+    	@orders = current_user.orders.all
+    end
   end
 
   

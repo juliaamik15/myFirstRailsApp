@@ -19,7 +19,7 @@ class PaymentsController < ApplicationController
 	    	logger.debug "Order fields before saving: #{@order.product.id}, #{@order.user.id}, #{@order.total}"
 	    	@order.save
   		end
-	    redirect_to product_path(@product), notice: 'Thank you for your purchase'
+	    redirect_to orders_path, notice: 'Thank you for your purchase'
 	  rescue Stripe::CardError => e
 	    # The card has been declined
 	    redirect_to :back, alert: 'The card has been declined'
