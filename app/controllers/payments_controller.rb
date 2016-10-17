@@ -12,12 +12,20 @@ class PaymentsController < ApplicationController
 	      :description => params[:stripeEmail]
 	    )
 	    if charge.paid
+
 	    	@order = Order.new 
 	    	@order.user = @user
-	    	@order.product = @product
+	    	#@order.product = @product
 	    	@order.total = @product.price
-	    	logger.debug "Order fields before saving: #{@order.product.id}, #{@order.user.id}, #{@order.total}"
+	    	logger.debug "Order fields before saving: #{@order.user.id}, #{@order.total}"
 	    	@order.save
+
+	    	@line_item = LineItem.new
+	    	@line_item.product = @product
+	    	@line_item.order = @order
+	    	@line_item.quantity = 1
+	    	@line_item.save
+
   		end
 	    redirect_to orders_path, notice: 'Thank you for your purchase'
 	  rescue Stripe::CardError => e

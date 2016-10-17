@@ -4,18 +4,21 @@ class OrdersController < ApplicationController
   
   def index
   	if signed_in? && current_user.admin? 
-  		@orders = Orders.all 
+  		@orders = Order.all 
   	 else
     	@orders = current_user.orders.all
     end
   end
 
+  def show
+    @line_items = @order.line_items 
+  end
   
 
   private
 
   def order_params
-    params.require(:order).permit(:user_id, :product_id, :total)
+    params.require(:order).permit(:user_id, :billing_address, :delivery_address, :total)
   end
   
 

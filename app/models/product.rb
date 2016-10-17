@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
-	has_many :orders
+	has_many :line_items
+	has_many :orders, :through => :line_items
 	has_many :comments, dependent: :destroy
 	validates :name, presence: true
 

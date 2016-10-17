@@ -1,8 +1,8 @@
 class Order < ActiveRecord::Base
-	belongs_to :product
+	has_many :line_items
+	has_many :products, :through => :line_items
 	belongs_to :user
 
 	validates :user, presence: true
-  validates :product, presence: true
   
 end

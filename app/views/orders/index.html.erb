@@ -7,8 +7,8 @@
   <% @orders.each do |order| %>
         <div class="row">
           <p><%= order.user.email %>
-          <%= order.product.name %>
-          <%= order.total %></p>
+          <%= order.billing_address %> &nbsp;
+          Total: £<%= order.total %></p>
         </div>
     <% end %>
 

@@ -1,6 +1,18 @@
 <div class="product_pages">
 	<p id="notice"><%= notice %></p>
 
-	<h1>Order</h1>
+	<h1>Order <%= @order.id %></h1>
+			<% @line_items.each do |line_item| %>
+	        <div class="row">
+	            
+	            	<strong><%= @order.user.email %></strong> <small><em><%= "#{line_item.created_at}" %></em></small>
+	            
+	           		<br>Product name: <%= line_item.product.name %>
+	           	
+	            	Quantity: <%= line_item.quantity %>
+	            	<hr>
+
+	        </div>
+	    <% end %>
 	
 </div>
