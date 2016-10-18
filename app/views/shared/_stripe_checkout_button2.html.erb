@@ -1,0 +1,13 @@
+
+<% # if @total? - get it, 0 - if not %>
+<script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-amount="<%= total*100 %>"
+    data-name="Cacti from Julia shop"
+    data-description="Your order total:"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto"
+    data-zip-code="true"
+    data-currency="GBP">
+  </script>

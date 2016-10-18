@@ -6,9 +6,9 @@
 
   <% @orders.each do |order| %>
         <div class="row">
-          <p><%= order.user.email %>
+          <p>Order #<%= order.id %>
           <%= order.billing_address %> &nbsp;
-          Total: £<%= order.total %></p>
+          Total: <%= number_to_currency(order.total, :unit => '£') %> <%= link_to 'Details', order_path(order) %></p>
         </div>
     <% end %>
 

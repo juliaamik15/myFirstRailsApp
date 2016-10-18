@@ -1,0 +1,41 @@
+<div class="shop_pages">
+	<h1>Your cart</h1>
+	<div id="cart_content"
+		<% total = 0 %>
+
+		<% @cart.each do |id, quantity| %>
+				<br>
+					<% product = Product.find(id) %>
+					<%= image_tag(product.image_url, width: '75') %>
+					<%= link_to product.name, product %>
+					Price for one: <%= number_to_currency(product.price, :unit => '£') %>
+					Quantity: <%= quantity %>
+			
+				<% total += quantity * product.price %>
+		<% end %>
+
+
+		<hr>
+			<b>Total: <%= number_to_currency(total, :unit => '£') %> </b>
+			<%= link_to 'Empty your cart', cart_clear_path, class: "btn btn-success", id: "clear_cart_button" %>
+		
+
+		<p>
+			<%= form_tag "/payments/create2" do %>
+		    <%= hidden_field_tag(:total, total) %>
+		    
+		    <script
+		    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+		    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+		    data-amount="<%= total*100 %>"
+		    data-name="Cacti from Julia shop"
+		    data-description="Your order total:"
+		    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+		    data-locale="auto"
+		    data-zip-code="true"
+		    data-currency="GBP">
+		  </script>
+		  <% end %>
+		</p>
+	</div>
+</div>

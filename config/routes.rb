@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   
 
+  get '/cart' => 'cart#index'
+  get '/cart/clear' => 'cart#clearCart'
+  get '/cart/:id' => 'cart#add'
+
   get 'payments/create'
+  get 'payments/create2'
 
   get 'static_pages/gallery'
 
@@ -22,6 +27,7 @@ Rails.application.routes.draw do
   post 'static_pages/thank_you'
 
   post 'payments/create'
+  post 'payments/create2'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

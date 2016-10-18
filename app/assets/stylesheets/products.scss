@@ -14,12 +14,12 @@ a, a:visited {
   background-size: cover;
   position: relative;
   height: 1080px;
-  margin-top: -10px;
+  /* margin-top: -10px; */
 }
 
 .product_show_page{
 	background-color: #dfe8d3;
-	margin-top: -10px; 
+  margin-top: -10px; 
 }
 
 
@@ -81,4 +81,23 @@ label {
 p.product_show{
 	text-align: left;
 	color: black;
+}
+
+#cart_content{
+	margin: 20px auto;
+	display: block;
+}
+
+#clear_cart_button{
+	float: right;
+}
+
+#order_total{
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 20px;
+}
+
+.order_row{
+	margin: 20px;
 }

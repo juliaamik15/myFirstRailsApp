@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
   def create
+  	
   	token = params[:stripeToken]
 	  # Create the charge on Stripe's servers - this will charge the user's card
 	  @product = Product.find(params[:product_id])
@@ -28,9 +29,56 @@ class PaymentsController < ApplicationController
 
   		end
 	    redirect_to orders_path, notice: 'Thank you for your purchase'
-	  rescue Stripe::CardError => e
+	  	rescue Stripe::CardError => e
 	    # The card has been declined
 	    redirect_to :back, alert: 'The card has been declined'
 	  end
+
   end
+
+  def create2
+  	token = params[:stripeToken]
+  	total = params[:total].to_f
+  	
+  	@user = current_user
+
+  	begin
+  		charge = Stripe::Charge.create(
+	      :amount => (total*100).to_i, # amount in cents, again
+	      :currency => "GBP",
+	      :source => token,
+	      :description => params[:stripeEmail]
+	    )
+
+	    if charge.paid
+
+	    	#create order
+	    	@order = Order.new 
+	    	@order.user = current_user
+	    	@order.total = total
+				@order.save
+ 				
+ 				#create line_items from cart
+ 			  @cart = session[:cart]
+ 			  @cart.each do |id, quantity| 
+					
+					@line_item =LineItem.new
+					@line_item.product = Product.find(id) 
+					@line_item.order = @order
+					@line_item.quantity = quantity
+					@line_item.save
+
+				end
+				#to clean the shopping cart
+				session[:cart] = nil
+			
+	    end
+
+	    redirect_to orders_path, notice: 'Thank you for your purchase'
+	  	rescue Stripe::CardError => e
+	    # The card has been declined
+	    redirect_to :back, alert: 'The card has been declined'
+  	end
+  end
+
 end

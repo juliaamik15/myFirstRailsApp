@@ -14,15 +14,18 @@
           <p>
             <strong>Price:</strong> £<%= @product.price %>
             
-              <% if @product.availability %>
-                <%= form_tag "/payments/create" do %>
-                  <%= hidden_field_tag(:product_id, @product.id) %>
-                  <%= render partial: "shared/stripe_checkout_button" %>
-                <% end %>
-              <% end %>
+              
           </p>
           
           <p>
+            <% if @product.availability && signed_in? %>
+              <a class="btn btn-success" href='/cart/<%= @product.id %>'>Add to cart</a>
+
+                <%#= form_tag "/payments/create" do %>
+                  <%#= hidden_field_tag(:product_id, @product.id) %>
+                  <%#= render partial: "shared/stripe_checkout_button" %>
+                <% #end %>
+            <% end %>
           <% if signed_in? && current_user.admin? %>
             <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-success"  %> 
           <% end %>
