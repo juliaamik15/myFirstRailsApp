@@ -58,19 +58,20 @@
       </p>
       <p class="product_show">
       <% if @product.comments_count >0 %>
-      <strong>Average Rating:</strong>
-       <div class="rated" data-score="<%= @product.average_rating %>"></div> 
-        <strong>Top positive review:</strong>
-          <%= @product.highest_rating_comment.body %>
-          <% else %>
+        <strong>Average Rating:</strong>
+        <div  id= "average-rating" class="rated" data-score="<%= @product.average_rating %>"></div> 
+        <br>
+          <strong>Top positive review:</strong>
+          <div id="highest_rating_text"><%= @product.highest_rating_comment.body %></div>
+          <br>
+          <strong>Top critical review:</strong>
+          <div id="worst_rating_text"><%= @product.worst_rating_comment.body %></div>
+      <% else %>
           <strong>No comments for this product.</strong>
-        <% end %>
-      <br>
-      <% if @product.comments_count >0 %>
-        <strong>Top critical review:</strong>
-          <%= @product.worst_rating_comment.body %>
-      <% end %> 
+      <% end %>
+
       </p>
+      Customer Reviews <%= render 'comments' %>
     </div>
 
     <div class="col-sm-6 col-md-4">
@@ -78,9 +79,7 @@
     </div>
 
 
-    <div class="col-sm-6 col-md-4">
-      Customer Reviews <%= render 'comments' %>
-    </div>
+    
 
   </div>
   </div>
