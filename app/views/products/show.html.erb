@@ -4,18 +4,22 @@
   <div class="container-fluid">
     <% cache @product do %>
       <h1><%= @product.name %></h1>
+    <%# end %>
       <div class="row">
       
       
         <div class="col-sm-6 col-md-4">
           <div class="thumbnail">
-            <%= image_tag(@product.image_url, class: "img-responsive img-zoom", data_zoom_image: @product.image_url) %>
+            
+              <%= image_tag(@product.image_url, class: "img-responsive img-zoom", data_zoom_image: @product.image_url) %>
+            
             <div class="caption product_show">
-              <h1><%= @product.name %></h1>
-              <p>
-                <strong>Price:</strong> £<%= @product.price %>
-              </p>
-              
+              <%# cache @product do %>
+                <h1><%= @product.name %></h1>
+                <p>
+                  <strong>Price:</strong> £<%= @product.price %>
+                </p>
+              <% end %>
               <p>
                 <% if @product.availability && signed_in? %>
                   <a class="btn btn-success" href='/cart/<%= @product.id %>'>Add to cart</a>
@@ -36,25 +40,31 @@
         </div>
 
         <div class="col-sm-6 col-md-4">
-          <p class="product_show">
-            <strong>Creation date: </strong>
-            <%= @product.created_at.to_formatted_s(:long) %>
-          </p>
-          <p class="product_show">
-            <strong>In stock: </strong>
-            <% if @product.availability %>
-              <%= " yes" %>
-            <% else %>
-              <%= " no" %>
-            <% end %>
-          </p>
           
-          <p class="product_show">
-            <strong>Description: </strong><%= @product.description %> 
-          </p>
-          <p class="product_show">
-              <strong>Flower color: </strong> <%= @product.flower_colour %> 
-          </p>
+
+            <p class="product_show">
+              <strong>Creation date: </strong>
+              <%= @product.created_at.to_formatted_s(:long) %>
+            </p>
+
+            <p class="product_show">
+              <strong>In stock: </strong>
+              <% if @product.availability %>
+                <%= " yes" %>
+              <% else %>
+                <%= " no" %>
+              <% end %>
+            </p>
+            
+            <p class="product_show">
+              <strong>Description: </strong><%= @product.description %> 
+            </p>
+            <p class="product_show">
+                <strong>Flower color: </strong> <%= @product.flower_colour %> 
+            </p>
+
+        
+
           <p class="product_show">
           <% if @product.comments_count >0 %>
             <strong>Average Rating:</strong>
@@ -81,7 +91,7 @@
         
 
       </div>
-    <% end %>
+    
   </div>
 
 </div>
