@@ -2,86 +2,86 @@
   <p id="notice"><%= notice %></p>
 
   <div class="container-fluid">
-  <h1><%= @product.name %></h1>
-  <div class="row">
-  
-  
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <%= image_tag(@product.image_url, class: "img-responsive img-zoom", data_zoom_image: @product.image_url) %>
-        <div class="caption product_show">
-          <h1><%= @product.name %></h1>
-          <p>
-            <strong>Price:</strong> £<%= @product.price %>
-            
+    <% cache @product do %>
+      <h1><%= @product.name %></h1>
+      <div class="row">
+      
+      
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <%= image_tag(@product.image_url, class: "img-responsive img-zoom", data_zoom_image: @product.image_url) %>
+            <div class="caption product_show">
+              <h1><%= @product.name %></h1>
+              <p>
+                <strong>Price:</strong> £<%= @product.price %>
+              </p>
               
+              <p>
+                <% if @product.availability && signed_in? %>
+                  <a class="btn btn-success" href='/cart/<%= @product.id %>'>Add to cart</a>
+
+                    <%#= form_tag "/payments/create" do %>
+                      <%#= hidden_field_tag(:product_id, @product.id) %>
+                      <%#= render partial: "shared/stripe_checkout_button" %>
+                    <% #end %>
+                <% end %>
+              <% if signed_in? && current_user.admin? %>
+                <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-success"  %> 
+              <% end %>
+                <%= link_to 'Back', products_path, class: "btn btn-success" %>
+                
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+          <p class="product_show">
+            <strong>Creation date: </strong>
+            <%= @product.created_at.to_formatted_s(:long) %>
+          </p>
+          <p class="product_show">
+            <strong>In stock: </strong>
+            <% if @product.availability %>
+              <%= " yes" %>
+            <% else %>
+              <%= " no" %>
+            <% end %>
           </p>
           
-          <p>
-            <% if @product.availability && signed_in? %>
-              <a class="btn btn-success" href='/cart/<%= @product.id %>'>Add to cart</a>
-
-                <%#= form_tag "/payments/create" do %>
-                  <%#= hidden_field_tag(:product_id, @product.id) %>
-                  <%#= render partial: "shared/stripe_checkout_button" %>
-                <% #end %>
-            <% end %>
-          <% if signed_in? && current_user.admin? %>
-            <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-success"  %> 
-          <% end %>
-            <%= link_to 'Back', products_path, class: "btn btn-success" %>
-            
+          <p class="product_show">
+            <strong>Description: </strong><%= @product.description %> 
           </p>
+          <p class="product_show">
+              <strong>Flower color: </strong> <%= @product.flower_colour %> 
+          </p>
+          <p class="product_show">
+          <% if @product.comments_count >0 %>
+            <strong>Average Rating:</strong>
+            <div  id= "average-rating" class="rated" data-score="<%= @product.average_rating %>"></div> 
+            <br>
+              <strong>Top positive review:</strong>
+              <div id="highest_rating_text"><%= @product.highest_rating_comment.body %></div>
+              <br>
+              <strong>Top critical review:</strong>
+              <div id="worst_rating_text"><%= @product.worst_rating_comment.body %></div>
+          <% else %>
+              <strong>No comments for this product.</strong>
+          <% end %>
+
+          </p>
+          Customer Reviews <%= render 'comments' %>
         </div>
+
+        <div class="col-sm-6 col-md-4">
+          <%= render 'comments/form' %>
+        </div>
+
+
+        
+
       </div>
-    </div>
-
-    <div class="col-sm-6 col-md-4">
-      <p class="product_show">
-        <strong>Creation date: </strong>
-        <%= @product.created_at.to_formatted_s(:long) %>
-      </p>
-      <p class="product_show">
-        <strong>In stock: </strong>
-        <% if @product.availability %>
-          <%= " yes" %>
-        <% else %>
-          <%= " no" %>
-        <% end %>
-      </p>
-      
-      <p class="product_show">
-        <strong>Description: </strong><%= @product.description %> 
-      </p>
-      <p class="product_show">
-          <strong>Flower color: </strong> <%= @product.flower_colour %> 
-      </p>
-      <p class="product_show">
-      <% if @product.comments_count >0 %>
-        <strong>Average Rating:</strong>
-        <div  id= "average-rating" class="rated" data-score="<%= @product.average_rating %>"></div> 
-        <br>
-          <strong>Top positive review:</strong>
-          <div id="highest_rating_text"><%= @product.highest_rating_comment.body %></div>
-          <br>
-          <strong>Top critical review:</strong>
-          <div id="worst_rating_text"><%= @product.worst_rating_comment.body %></div>
-      <% else %>
-          <strong>No comments for this product.</strong>
-      <% end %>
-
-      </p>
-      Customer Reviews <%= render 'comments' %>
-    </div>
-
-    <div class="col-sm-6 col-md-4">
-      <%= render 'comments/form' %>
-    </div>
-
-
-    
-
-  </div>
+    <% end %>
   </div>
 
 </div>
