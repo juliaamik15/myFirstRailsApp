@@ -9,9 +9,16 @@
     </div>
         <%= submit_tag "Search", class: "btn btn-default" %>
     <% end %>
-  <div class="product_link">
-    <%= link_to 'New Product', new_product_path %>
-  </div>
+    <% unless signed_in? %>
+      <div class="product_link">
+        To buy plants please login.
+      </div>
+    <% end %>
+  <% if signed_in? && current_user.admin? %>
+    <div class="product_link">
+      <%= link_to 'New Product', new_product_path %>
+    </div>
+  <% end %>
   </div>
 
   <div class="container">
