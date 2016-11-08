@@ -70,3 +70,7 @@ gem "brakeman", :require => false
 gem "recaptcha", require: "recaptcha/rails"
 
 gem 'dalli'
+
+gem 'redis-rails'
+
+gem 'newrelic_rpm'
