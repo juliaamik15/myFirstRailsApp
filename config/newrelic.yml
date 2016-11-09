@@ -12,8 +12,10 @@
 
 common: &default_settings
   # Required license key associated with your New Relic account.
+
   #for development
   #license_key: 29c811fad30dd70dab5b59f2db06ae5f0d882717
+  
   #for production
   license_key: 85d5d5e67a06a02e490f968198f9432d45ba7cde
 
