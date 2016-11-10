@@ -23,4 +23,13 @@ class Product < ActiveRecord::Base
 	def self.search(search_term)
 		where(" lower(name) LIKE lower(?) ", "%#{search_term}%")
 	end
+
+	def score
+		$redis.zincrby("the_popular_product", 1, self.id)
+	end
+
+	def self.top 
+		 $redis.zrevrange("the_popular_product", 0, 0).map{|id| Product.find(id)}
+		 
+	end
 end

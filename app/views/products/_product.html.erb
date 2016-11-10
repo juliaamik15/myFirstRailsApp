@@ -6,6 +6,8 @@
         <%= image_tag(product.image_url, class: "img-responsive") %>
         <h4><%= product.name %></h4>
         <p><%= product.description %></p>
+        
+        
         <strong>Price: &pound;<%= product.price.to_f %></strong>
             
         <strong> In stock: 
@@ -17,7 +19,10 @@
         </strong>
         
         <strong> Created: <%=product.created_at.to_formatted_s(:long) %> </strong>
-    <% end %>    
+    <% end %>  
+    <% if ( (@top_product!= nil) && (@top_product[0].id == product.id)) %>  
+      <p id="top_product">The most popuar product!</p>
+    <% end %>  
         
     <%= link_to 'Show', product %>
     <% if signed_in? && current_user.admin? %>

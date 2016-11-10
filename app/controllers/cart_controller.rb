@@ -25,6 +25,8 @@ before_action :authenticate_user!
 			cart[id]=1
 		end
 
+		Product.find(id).score
+
 		redirect_to :action => :index
 	end
 

@@ -11,6 +11,9 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
+    
+      @top_product = Product.top
+    
   end
 
   # GET /products/1
