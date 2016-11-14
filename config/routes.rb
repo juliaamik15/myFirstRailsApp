@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   #root 'welcome#index'
   root 'static_pages#index'
 
+  mount ActionCable.server => '/cable'
+
   resources :orders, only: [:index, :show, :create, :destroy]
 
   devise_for :users, controllers: { registrations: "registrations", passwords: "passwords" }, :skip => [:sessions]

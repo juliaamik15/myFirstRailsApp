@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     logger.debug("User creating a comment: #{@comment.user.email }")
     respond_to do |format|
       if @comment.save
+        ActionCable.server.broadcast 'product_channel', comment: @comment, average_rating: @comment.product.average_rating
         logger.debug("Comment saved successfully!")
         format.html { redirect_to @product, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @product }
