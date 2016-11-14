@@ -2,7 +2,9 @@
 class ProductChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
+    logger.debug("stream_from product_channel")
     stream_from "product_channel"
+    logger.debug("after stream_from product_channel")
   end
 
   def unsubscribed
