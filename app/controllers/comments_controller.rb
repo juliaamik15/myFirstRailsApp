@@ -4,10 +4,13 @@ class CommentsController < ApplicationController
 		@product = Product.find(params[:product_id])
   	@comment = @product.comments.new(comment_params)
   	@comment.user = current_user
-    logger.debug("User creating a comment: #{@comment.user.email }")
+    @user = current_user
+    logger.debug("User creating a comment: #{current_user.email }")
     respond_to do |format|
       if @comment.save
-        ActionCable.server.broadcast 'product_channel', comment: @comment, average_rating: @comment.product.average_rating
+        #ActionCable.server.broadcast 'product_channel', comment: @comment, average_rating: @comment.product.average_rating
+        #ProductChannel.broadcast_to @product.id, comment: @comment, average_rating: @comment.product.average_rating
+        #ProductChannel.broadcast_to @product.id, comment: CommentsController.render(partial: 'comments/comment', locals: {comment: @comment, current_user: current_user}), average_rating: @comment.product.average_rating
         logger.debug("Comment saved successfully!")
         logger.debug("Action cable server- #{ActionCable.server}")
         format.html { redirect_to @product, notice: 'Comment was successfully created.' }

@@ -12289,7 +12289,7 @@ window.YT&&YT.Player?this.player||(this.player=new YT.Player(this.element,{video
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
-App.product = App.cable.subscriptions.create("ProductChannel", {
+App.product = App.cable.subscriptions.create(channel: "ProductChannel", {
   connected: function() {
     // Called when the subscription is ready for use on the server
   },
@@ -12299,10 +12299,24 @@ App.product = App.cable.subscriptions.create("ProductChannel", {
   },
 
   received: function(data) {
-  	alert("we received!")
     // Called when there's incoming data on the websocket for this channel
+   
     $(".alert.alert-info").show();
+    $('.product-reviews').prepend(data.comment);
+    
+    refreshRating();
+  },
+
+  listen_to_comments: function() {
+    alert("!!!!!!");
+    return this.perform('listen', { product_id: $("[data-product-id]").data("product-id") });
   }
+
+});
+
+$(document).on('turbolinks:load', function() {
+  alert("listen");
+  App.product.listen_to_comments();
 });
 (function() {
 
