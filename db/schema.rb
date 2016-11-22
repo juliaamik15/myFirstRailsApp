@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -20,10 +19,9 @@ ActiveRecord::Schema.define(version: 20161109095053) do
     t.integer  "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_comments_on_product_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
-
-  add_index "comments", ["product_id"], name: "index_comments_on_product_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "line_items", force: :cascade do |t|
     t.integer  "order_id"
@@ -31,19 +29,17 @@ ActiveRecord::Schema.define(version: 20161109095053) do
     t.integer  "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_line_items_on_order_id"
+    t.index ["product_id"], name: "index_line_items_on_product_id"
   end
-
-  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
-  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
 
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
     t.float   "total"
     t.string  "billing_address"
     t.string  "delivery_address"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
-
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -54,9 +50,8 @@ ActiveRecord::Schema.define(version: 20161109095053) do
     t.string   "flower_colour"
     t.decimal  "price"
     t.boolean  "availability"
+    t.index ["name"], name: "index_products_on_name"
   end
-
-  add_index "products", ["name"], name: "index_products_on_name"
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -74,9 +69,8 @@ ActiveRecord::Schema.define(version: 20161109095053) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "admin",                  default: false, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
