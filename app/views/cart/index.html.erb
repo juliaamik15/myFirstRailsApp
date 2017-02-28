@@ -14,25 +14,28 @@
 			
 				<% total += quantity * product.price %>
 		<% end %>
-		<% if session[:cart] && total > 0 %>
-				<% total += 3.5 %>
-		<% else %>
-				<% total = 0 %>
+		<% if session[:cart] && total > 0 
+				total += 3.5 
+				session[:total]=total
+		  else
+				total = 0 
+				session[:total]=0
+				%>
 		<% end %>
 		<hr>
-			<b>Total: <%= number_to_currency(total, :unit => '£') %> </b>
+			<b>Total: <%= number_to_currency(session[:total], :unit => '£') %> </b>
 			<br> Delivery cost for up to 6 plants is £3.50<br>
 			<%= link_to 'Empty your cart', cart_clear_path, class: "btn btn-success", id: "clear_cart_button" %>
 		
 
 		<p>
 			<%= form_tag "/payments/create2" do %>
-		    <%= hidden_field_tag(:total, total) %>
+		    <%= hidden_field_tag(:total, session[:total]) %>
 		    
 		    <script
 		    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 		    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-		    data-amount="<%= total*100 %>"
+		    data-amount="<%= session[:total]*100 %>"
 		    data-name="Cacti from Julia shop"
 		    data-description="Your order total:"
 		    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
