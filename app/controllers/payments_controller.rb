@@ -61,14 +61,21 @@ class PaymentsController < ApplicationController
  				#create line_items from cart
  			  @cart = session[:cart]
  			  @cart.each do |id, quantity| 
-					
+
+					@p= Product.find(id)
+					@p.quantity=  @p.quantity - quantity
+					@p.save
+
 					@line_item =LineItem.new
-					@line_item.product = Product.find(id) 
+					@line_item.product = @p
 					@line_item.order = @order
 					@line_item.quantity = quantity
 					@line_item.save
 
 				end
+				
+				#to remove reserved items
+				ReservedProduct.remove_reservation(@cart, current_user)
 				#to clean the shopping cart
 				session[:cart] = nil
 			
@@ -77,7 +84,7 @@ class PaymentsController < ApplicationController
 	    redirect_to orders_path, notice: 'Thank you for your purchase'
 	  	rescue Stripe::CardError => e
 	    # The card has been declined
-	    redirect_to :back, alert: 'The card has been declined'
+	    redirect_to :back, notice: 'The card has been declined'
   	end
   end
 

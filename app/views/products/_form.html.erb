@@ -27,15 +27,19 @@
     <%= f.label :flower_color %><br>
     <%= f.text_field :flower_colour, class: 'form-control' %>
   </div>
-<div class="field">
-  <%= f.label :price %><br>
-  <%= f.text_field :price, class: 'form-control' %>
-</div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price, class: 'form-control' %>
+  </div>
+  <div class="field form-check">
+    <%= f.label :availability, class: 'form-check-label'%><br>
+    <%= f.check_box :availability, class: 'form-check-input'  %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.text_field :quantity, class: 'form-control' %>
+  </div>
 
-<div class="field form-check">
-  <%= f.label :availability, class: 'form-check-label'%><br>
-  <%= f.check_box :availability, class: 'form-check-input'  %>
-</div>
 </div>
   <div class="actions">
     <%= f.submit "Save", class: "btn btn-success" %>

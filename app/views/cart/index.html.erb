@@ -1,4 +1,5 @@
 <div class="shop_pages">
+<p id="notice"><%= notice %></p>
 	<h1>Your cart</h1>
 	<div id="cart_content"
 		<% total = 0 %>
@@ -13,10 +14,11 @@
 			
 				<% total += quantity * product.price %>
 		<% end %>
-
+				<% total += 3.5 %>
 
 		<hr>
 			<b>Total: <%= number_to_currency(total, :unit => '£') %> </b>
+			<br> Delivery cost for up to 6 plants is £3.50<br>
 			<%= link_to 'Empty your cart', cart_clear_path, class: "btn btn-success", id: "clear_cart_button" %>
 		
 

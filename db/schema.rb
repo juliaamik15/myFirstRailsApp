@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109095053) do
+ActiveRecord::Schema.define(version: 20170223124445) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -50,7 +50,16 @@ ActiveRecord::Schema.define(version: 20161109095053) do
     t.string   "flower_colour"
     t.decimal  "price"
     t.boolean  "availability"
+    t.integer  "quantity"
     t.index ["name"], name: "index_products_on_name"
+  end
+
+  create_table "reserved_products", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.datetime "expire_time"
+    t.integer  "user_id"
+    t.index ["product_id"], name: "index_reserved_products_on_product_id"
   end
 
   create_table "users", force: :cascade do |t|
