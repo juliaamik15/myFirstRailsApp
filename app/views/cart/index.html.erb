@@ -14,8 +14,11 @@
 			
 				<% total += quantity * product.price %>
 		<% end %>
+		<% if session[:cart] %>
 				<% total += 3.5 %>
-
+		<% else %>
+				<% total = 0 %>
+		<% end %>
 		<hr>
 			<b>Total: <%= number_to_currency(total, :unit => '£') %> </b>
 			<br> Delivery cost for up to 6 plants is £3.50<br>
