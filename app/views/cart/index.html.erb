@@ -23,8 +23,9 @@
 				%>
 		<% end %>
 		<hr>
+			<br> Delivery to UK mainland only, by Royal Mail Second class signed for.<br>Postage & Packing: £3.50<br>
 			<b>Total: <%= number_to_currency(session[:total], :unit => '£') %> </b>
-			<br> Delivery cost for up to 6 plants is £3.50<br>
+			
 			<%= link_to 'Empty your cart', cart_clear_path, class: "btn btn-success", id: "clear_cart_button" %>
 		
 

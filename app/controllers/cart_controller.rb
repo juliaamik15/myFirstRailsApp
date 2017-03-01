@@ -43,6 +43,7 @@ before_action :authenticate_user!
 				cart = session[:cart]
 			else
 				session[:cart] = {}
+				session[:created_at]= Time.now
 				cart = session[:cart] 
 			end
 			if cart[id] then

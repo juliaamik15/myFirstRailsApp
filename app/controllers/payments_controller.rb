@@ -1,4 +1,6 @@
 class PaymentsController < ApplicationController
+	before_filter :check_session
+
   def create
   	
   	token = params[:stripeToken]
@@ -40,8 +42,9 @@ class PaymentsController < ApplicationController
   	token = params[:stripeToken]
   	total = params[:total].to_f
   	
-  	@user = current_user
-
+  	#@user = current_user
+  	if current_user && session[:cart]
+  		byebug
   	begin
   		charge = Stripe::Charge.create(
 	      :amount => (total*100).to_i, # amount in cents, again
@@ -71,8 +74,7 @@ class PaymentsController < ApplicationController
 					@line_item.order = @order
 					@line_item.quantity = quantity
 					@line_item.save
-
-				end
+				end #for do
 				
 				#to remove reserved items
 				ReservedProduct.remove_reservation(@cart, current_user)
@@ -85,7 +87,22 @@ class PaymentsController < ApplicationController
 	  	rescue Stripe::CardError => e
 	    # The card has been declined
 	    redirect_to :back, notice: 'The card has been declined'
+  	end # for begin
   	end
+
   end
+
+  def check_session
+  	byebug
+  	unless session[:cart]
+  		reset_session
+     	redirect_to new_user_session_path, notice: 'Your cart was expired.'
+  	end
+    if session[:cart] && session[:created_at] < 30.minutes.ago
+     	session[:cart] = nil
+     	reset_session
+     	redirect_to new_user_session_path, notice: 'Your cart was expired.'
+    end
+ end
 
 end
