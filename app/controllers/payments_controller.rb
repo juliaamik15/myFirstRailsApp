@@ -44,7 +44,7 @@ class PaymentsController < ApplicationController
   	
   	#@user = current_user
   	if current_user && session[:cart]
-  		byebug
+  		#byebug
   	begin
   		charge = Stripe::Charge.create(
 	      :amount => (total*100).to_i, # amount in cents, again
@@ -93,7 +93,7 @@ class PaymentsController < ApplicationController
   end
 
   def check_session
-  	byebug
+  	#byebug
   	unless session[:cart]
   		reset_session
      	redirect_to new_user_session_path, notice: 'Your cart was expired.'
