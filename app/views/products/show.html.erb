@@ -24,7 +24,7 @@
                 <strong>Quantity: </strong> <%= @product.quantity %>
               </p>
               <p>
-                <% if @product.availability && (@product.quantity > 0) && signed_in? %>
+                <% if (@product.quantity > 0) && signed_in? %>
                   <a class="btn btn-success" href='/cart/<%= @product.id %>'>Add to cart</a>
 
                     <%#= form_tag "/payments/create" do %>
@@ -53,7 +53,7 @@
 
             <p class="product_show">
               <strong>In stock: </strong>
-              <% if @product.availability %>
+              <% if (@product.quantity > 0) %>
                 <%= " yes" %>
               <% else %>
                 <%= " no" %>

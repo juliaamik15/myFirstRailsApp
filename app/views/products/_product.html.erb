@@ -11,7 +11,7 @@
         <strong>Price: &pound;<%= product.price.to_f %></strong>
             
         <strong> In stock: 
-          <% if product.availability %>
+          <% if product.quantity > 0 %>
             <%= "yes" %>
           <% else %>
               <%= "no" %>
